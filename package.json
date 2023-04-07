@@ -1,0 +1,22 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.6.5",
+    "daisyui": "^2.51.5",
+    "nuxt": "^3.3.2"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "@upstash/redis": "^1.20.2",
+    "ably": "^1.2.38",
+    "markdown-it": "^13.0.1"
+  }
+}
