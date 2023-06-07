@@ -1,42 +1,16 @@
-# Nuxt 3 Minimal Starter
+# Restaurant-Dashboard
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a dashboard for a restaurant order system.
 
-## Setup
+## Tech stack:
++ FE: Vue3 and NuxtJS
++ UI: TailwindCSS and DaisyUI
++ DB: UpStash Redis
++ Realtime: Ably WebSockets and WebHooks
++ Stoarge Bucket: Cloudflare R2
 
-Make sure to install the dependencies:
+Serverside Rendered.
 
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Env variable:
+  UPSTASH_REDIS_REST_URL -> STRING
+  UPSTASH_REDIS_REST_TOKEN -> STRING
