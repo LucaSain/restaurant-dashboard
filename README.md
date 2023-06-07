@@ -12,5 +12,5 @@ This is a dashboard for a restaurant order system.
 Serverside Rendered.
 
 ## Env variable:
-  UPSTASH_REDIS_REST_URL -> STRING
-  UPSTASH_REDIS_REST_TOKEN -> STRING
+    UPSTASH_REDIS_REST_URL -> STRING
+    UPSTASH_REDIS_REST_TOKEN -> STRING
