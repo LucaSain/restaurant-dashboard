@@ -6,7 +6,6 @@ const description = ref(null);
 const imageSrc = ref('https://via.placeholder.com/150');
 const props = defineProps(['section', 'category']);
 const emit = defineEmits(['create']);
-const ischecked = ref(false);
 function handleFileChange(e) {
     const file = e.files[0];
     fileInputRef.value = e;
@@ -15,9 +14,9 @@ function handleFileChange(e) {
     }
 }
 function isNumeric(str) {
-    if (typeof str != "string") return false // we only process strings!  
-    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-        !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+    if (typeof str != "string") return false
+    return !isNaN(str) &&
+        !isNaN(parseFloat(str))
 }
 async function uploadFile() {
     const file = fileInputRef.value.files[0];
@@ -34,12 +33,12 @@ async function uploadFile() {
         return;
     }
 
-    let id = await fetch("/api/getid").then(async res => await res.json());
+    let id = await fetch("/api/id").then(async res => await res.json());
     id += 1;
     emit("create", { id: id, name: title.value, price: price.value, description: description.value, section: props.section, category: props.category, image: imageSrc.value });
 
     try {
-        await fetch('/api/addmenuitem?name=' + title.value + "&price=" + price.value + "&description=" + description.value + '&section=' + props.section + "&category=" + props.category + "&ctype=" + file.type)
+        await $fetch('/api/menuitem?name=' + title.value + "&price=" + price.value + "&description=" + description.value + '&section=' + props.section + "&category=" + props.category + "&ctype=" + file.type, { method: "POST" })
         const response = await fetch('https://restaurant.acamponezaworker.workers.dev/' + title.value + '.png', {
             method: 'POST',
             headers: {
@@ -50,7 +49,7 @@ async function uploadFile() {
         });
         resetEverything();
     } catch (error) {
-        alert("Something went wrong, please try again later");
+        alert("Something went wrong, please try again later.");
         resetEverything();
         console.log(error);
     }
@@ -58,7 +57,6 @@ async function uploadFile() {
 
 
 function resetEverything() {
-
     title.value = null;
     price.value = null;
     description.value = null;

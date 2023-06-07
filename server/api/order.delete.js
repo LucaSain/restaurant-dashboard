@@ -4,9 +4,13 @@ const redis = Redis.fromEnv();
 
 export default defineEventHandler(async (event) => {
     //get query params
-    const body = await readBody(event);
-    await redis.hset(body.id, { ...body });
-    await redis.lpush('curOrders', body.id);
+    const query = await getQuery(event)
+
+    await redis.lrem(query.class, 1, query.id)
+    await redis.del(query.id);
+
 
     return true;
+
+
 })

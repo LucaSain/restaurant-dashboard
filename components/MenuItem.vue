@@ -5,12 +5,12 @@ const props = defineProps(['id', 'itemData', 'category', 'section']);
 const emit = defineEmits(['update', 'delete']);
 let itemData = props.itemData;
 if (!itemData)
-    itemData = await fetch('/api/getmenuitem?id=' + props.id).then(res => res.json());
+    itemData = await fetch('/api/menuitem?id=' + props.id).then(res => res.json());
 //delete item from both api and local
 const Delete = async () => {
-    console.log(props.id);
 
-    await fetch('/api/deletemenuitem?id=' + (props.id ? props.id : itemData.id) + '&section=' + props.section + '&category=' + props.category);
+
+    await $fetch('/api/menuitem?id=' + (props.id ? props.id : itemData.id) + '&section=' + props.section + '&category=' + props.category, { method: "DELETE" });
     emit('delete', props.id, props.section, props.category);
 }
 </script>

@@ -4,10 +4,10 @@ const menu = ref(0)
 const CategoryText = ref(null);
 
 //get data from api
-const aperitiveData = await fetch("/api/getsection?section=aperitive").then(async res => await res.json());
-const mainData = await fetch("/api/getsection?section=main").then(async res => await res.json());
-const desertData = await fetch("/api/getsection?section=desert").then(async res => await res.json());
-const drinkData = await fetch("/api/getsection?section=drinks").then(async res => await res.json());
+const aperitiveData = await fetch("/api/section?section=aperitive").then(async res => await res.json());
+const mainData = await fetch("/api/section?section=main").then(async res => await res.json());
+const desertData = await fetch("/api/section?section=desert").then(async res => await res.json());
+const drinkData = await fetch("/api/section?section=drinks").then(async res => await res.json());
 const addedItems = ref({});
 const addedIds = ref([]);
 //populate each category with an ischecked attribute
@@ -45,7 +45,7 @@ const CreateCategory = async (sect) => {
         const category = CategoryText.value;
         CategoryText.value = null;
         data.value[sectionIndex].ischecked = false;
-        await fetch("/api/createcategory?section=" + sect + "&category=" + category);
+        await $fetch("/api/category?section=" + sect + "&category=" + category, { method: "POST" });
         return true;
     }
     alert("Please type a name for the category");
@@ -78,7 +78,7 @@ const deleteCategory = async (section, category) => {
         }
     })
     data.value[sectionIndex].categories.splice(categoryIndex, 1);
-    await fetch("/api/deletecategory?section=" + section.name.toLocaleLowerCase() + "&category=" + categoryIndex);
+    await $fetch("/api/category?section=" + section.name.toLocaleLowerCase() + "&category=" + categoryIndex, { method: "DELETE" });
 }
 
 //populate each section with an ischecked attribute

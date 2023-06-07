@@ -1,6 +1,6 @@
 <script setup>
 import * as Ably from 'ably'
-let od = await $fetch('/api/getorderlist');
+let od = await $fetch('/api/orders');//
 let orders = ref(od);
 const RTCurOrders = ref([]);
 const RTCompletedOrders = ref([]);

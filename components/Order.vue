@@ -9,7 +9,7 @@ const props = defineProps(['orderID', 'type', "orderDatas"]);
 let od;
 let ids, tps;
 if (props.orderID !== undefined) {
-    od = await $fetch('/api/getorder?id=' + props.orderID);
+    od = await $fetch('/api/order?id=' + props.orderID);
     ids = props.orderID;
 
 }
@@ -27,18 +27,18 @@ console.log(orderData.value, props.orderID);
 
 const removeOrder = async () => {
 
-    await $fetch('/api/removeorder?id=' + ids + '&class=' + ((tps === 'current') ? 'curOrders' : 'completedOrders'));
+    await $fetch('/api/order?id=' + ids + '&class=' + ((tps === 'current') ? 'curOrders' : 'completedOrders'), { method: "DELETE" });
     emit('remove', orderData.value);
     open.value = false;
 }
 const completeOrder = async () => {
-    await $fetch('/api/completeorder?id=' + ids);
+    await $fetch('/api/order?id=' + ids, { method: "PUT" });
     emit('update', orderData.value);
     open.value = false;
 }
 const removeItemFromOrder = async (item, from) => {
     let index = orderData.value[from].indexOf(item);
-    await $fetch('/api/removeitemfromorders?id=' + ids + "&index=" + index + "&from=" + from);
+    await $fetch('/api/item?id=' + ids + "&index=" + index + "&from=" + from, { method: "DELETE" });
     orderData.value[from].splice(index, 1);
     item.swapChecked = false;
 }
