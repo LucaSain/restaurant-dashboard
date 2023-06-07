@@ -1,6 +1,4 @@
-//import upstash redis
-import { Redis } from "@upstash/redis"
-const redis = Redis.fromEnv();
+import redis from "~~/utils/db";
 
 export default defineEventHandler(async (event) => {
 
