@@ -3,10 +3,10 @@
 A restaurant's digital menu.
 
 ## Tech stack:
-+ FE: Vue3 and NuxtJS
++ FE: Vue3 and Nuxt
 + UI: TailwindCSS and DaisyUI
-+ DB: UpStash Redis
-+ Realtime: Ably WebSockets and WebHooks
++ DB: Upstash Redis
++ Realtime: Ably
 + Stoarge Bucket: Cloudflare R2
 
 Serverside Rendered.
