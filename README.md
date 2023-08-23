@@ -1,6 +1,6 @@
 # Restaurant-Dashboard
 
-This is a dashboard for a restaurant order system.
+A restaurant's digital menu.
 
 ## Tech stack:
 + FE: Vue3 and NuxtJS
