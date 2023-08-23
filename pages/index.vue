@@ -43,7 +43,7 @@ let ably;
 
 
 onMounted(async () => {
-    ably = new Ably.Realtime.Promise("bNcHtg.OOW0Ew:wehWGVZLwOPm_n4nZf8-zIYCwgsWFdYHUTrS33mhnng")
+    ably = new Ably.Realtime.Promise("bNcHtg.KWMEIA:ZXfzLmAl8QK42old34hzFlVrTybsHUwViFmXyUISdpg")
     await ably.connection.once('connected');
     console.log('Connected to Ably!');
     const channel = ably.channels.get('orders');
